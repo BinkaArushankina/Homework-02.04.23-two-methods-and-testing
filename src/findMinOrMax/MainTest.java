@@ -1,3 +1,6 @@
+package findMinOrMax;
+
+import findMinOrMax.Main;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -5,9 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MainTest {
-    Main main;
+     private Main main;
     @BeforeEach
     public void init(){
         main= new Main();
@@ -36,7 +40,7 @@ public class MainTest {
     }
     //_____________________________________________________________________________________________________________
     @Test
-    public void testing_first(){
+    public void testing_first()throws EmptyListException{
         List<String> actual= Arrays.asList("bb","a","ddd");
         String expected = "a";
 
@@ -44,25 +48,33 @@ public class MainTest {
     }
 
     @Test
-    public void testing_first_a(){
+    public void testing_first_oneElement()throws EmptyListException{
         List<String > actual = Arrays.asList("a");
         String expected = "a";
 
         assertEquals(expected,main.first(actual));
+        //assertEquals("a",main.first(Arrays.asList("a")));
     }
 
     @Test
-    public void testing_first_moreStrings(){
+    public void testing_first_moreStrings()throws EmptyListException{
         List<String > actual = Arrays.asList("aaa","bbb","ddd","cc");
         String expected = "aaa";
 
         assertEquals(expected,main.first(actual));
     }
     @Test
-    public void testing_first_moreSameStrings(){
+    public void testing_first_moreSameStrings()throws EmptyListException{
         List<String > actual = Arrays.asList("a","b","d","c");
         String expected = "a";
 
         assertEquals(expected,main.first(actual));
+    }
+
+    @Test
+    public void testing_first_emptyList_throwsException(){
+
+       // assertEquals(null,main.first(Arrays.asList()));   // nuschen drugoj
+        assertThrows(EmptyListException.class,()->main.first(Arrays.asList()));
     }
 }

@@ -1,3 +1,4 @@
+package findMinOrMax;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -5,7 +6,7 @@ import java.util.List;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)throws EmptyListException {
         Main main= new Main();
 
       //1)wernutj wse krome tschisla 3 i bolsche
@@ -25,7 +26,11 @@ public class Main {
         }
       return result;
     }
-    public String first(List<String> list){
+    public String first(List<String> list)throws EmptyListException{
+        if(list.isEmpty()){
+            throw new EmptyListException();  //schtobi pri teste empty list ne raswaliwalsa
+        }
+
         String shortest= list.get(0);
         int indexShortest=0;
 
