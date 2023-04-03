@@ -73,8 +73,8 @@ public class MainTest {
 
     @Test
     public void testing_first_emptyList_throwsException(){
-
        // assertEquals(null,main.first(Arrays.asList()));   // nuschen drugoj
         assertThrows(EmptyListException.class,()->main.first(Arrays.asList()));
+       // assertThrows(EmptyListException.class,()->main.first(Arrays.asList("a","bb")));
     }
 }
